@@ -21,3 +21,11 @@ d2<-which(d1&T)
 
 ##second try
 which(is.na(df1$V1))
+
+## Part 4 - find row numbers if any value is NA
+
+for(i in c(1:100)){
+        
+d3<-is.na(df1[i,])
+d4<-any(d3==t)
+print(d1)}
