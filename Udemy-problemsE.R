@@ -43,15 +43,23 @@ print(f)
 }
 
 
-##Alternative answer
+##Alternative answer MUCH BETTER WAY TO CREATE CODE
 ##  Step 1 - create 10 digit random code
 for(i2 in 1:25){
+
+        ##gets all alphanumeric characters (separated by "")        
 h<-c(LETTERS,0:9)
+
+        ##selects 9 random characters (still separated by "")
 g<-sample(h,9,replace = F)
+
+        ##makes 9 characters a single string and collapes to no spaces
 code<-paste(g,collapse = "")
+
 ##step 2 - create string of LOC1,  LOc2, ...
 s2<-paste("LOC",i2,sep="")
-##step 3
+
+##step 3 - output - ([1] "LOC1 __ 2017-03-02 __ FIQAHW9PU")
 date<-paste(Sys.Date(),collapse = "")
 f<-paste(s2,date,code,sep = " __ ")
 print(f)}
