@@ -43,7 +43,7 @@ print(f)
 }
 
 
-##Alternative answer MUCH BETTER WAY TO CREATE CODE
+##Alternative answer MUCH BETTER WAY TO CREATE "CODE" element
 ##  Step 1 - create 10 digit random code
 for(i2 in 1:25){
 
