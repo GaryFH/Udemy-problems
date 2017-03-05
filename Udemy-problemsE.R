@@ -45,8 +45,11 @@ print(f)
 
 ##Alternative answer MUCH BETTER WAY TO CREATE "CODE" element
 ##  Step 1 - create 10 digit random code
-for(i2 in 1:25){
 
+codegen<-function(z){
+for(i2 in 1:z){
+        
+        
         ##gets all alphanumeric characters (separated by "")        
 h<-c(LETTERS,0:9)
 
@@ -62,6 +65,6 @@ s2<-paste("LOC",i2,sep="")
 ##step 3 - output - ([1] "LOC1 __ 2017-03-02 __ FIQAHW9PU")
 date<-paste(Sys.Date(),collapse = "")
 f<-paste(s2,date,code,sep = " __ ")
-print(f)}
+print(f)}}
 
 
