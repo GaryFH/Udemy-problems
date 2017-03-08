@@ -66,7 +66,7 @@ apply(df[,c(1:2)],1,FUN=hyp)
              apply(iris[,c(1:4)],2,max)
              
              ##or which is the same as above but the output is forced to be numeric with only 1 object()
-             vapply(iris[,c(1:4)],2,FUN=max,FUN.VALUE = numeric(1))
+             vapply(iris[,c(1:4)],FUN=max,FUN.VALUE = numeric(1))
              
              ##mapply is different - two or more arguments
              rep(1:5,5:1)   ##output is "[1] 1 1 1 1 1 2 2 2 2 3 3 3 4 4 5"
@@ -81,4 +81,46 @@ apply(df[,c(1:2)],1,FUN=hyp)
              mapply(seq,1:5,5:1)##this gives 5 sequences(1to5,2to4,3to3,4to2,5to1)
              ##add an argument
              mapply(seq,1:5,5:1, MoreArgs = list(length=7))
+             
+             
+             
+##Using "Iris" data set - 1) find min divided by max for all rows
+             f1<-function(x1){(min(x1)/max(x1))}
+             apply(iris[,c(1:4)],1,FUN=f1)
+             
+           ##for all the columns
+             f1<-function(x1){(min(x1)/max(x1))}
+             apply(iris[,c(1:4)],2,FUN=f1)
+             ##or
+             f1<-function(x1){(min(x1)/max(x1))}
+             sapply(iris[,c(1:4)],FUN=f1)
+             ##or
+             f1<-function(x1){(min(x1)/max(x1))}
+             apply(iris[,c(1:4)],1,FUN=f1)
+             ##or
+             f1<-function(x1){(min(x1)/max(x1))}
+             lapply(iris[,c(1:4)],FUN=f1)
+             ##or
+             f1<-function(x1){(min(x1)/max(x1))}
+             vapply(iris[,c(1:4)],FUN=f1,FUN.VALUE = numeric(1))
+                     
+        ##3  Using mapply find sum of columns
+             
+             mapply(sum,iris[,1],iris[,2],iris[,3],iris[,4])
+             
+             
+          ##Generate the following using mapply
+             ##      [,1] [,2] [,3] [,4] [,5]
+             ##[1,]   1.0 21.0 41.0 61.0 81.0
+             ##[2,]  20.8 32.8 44.8 56.8 68.8
+             ##[3,]  40.6 44.6 48.6 52.6 56.6
+             ##[4,]  60.4 56.4 52.4 48.4 44.4
+             ##[5,]  80.2 68.2 56.2 44.2 32.2
+             ##[6,] 100.0 80.0 60.0 40.0 20.0
+             ##
+             ##
+             ##
+             ##
+             mapply(seq, seq(1,81,20),seq(100,20,-20), MoreArgs=list(length=6))
+             
              
