@@ -10,16 +10,16 @@
 
 tbl1<-table(c1$CUSTNAME)
 df1<-as.data.frame(tbl1)
-df2<-df1[order(-df1[2]),]  ##ordf2<-df1[order(-df1$Freq),]
+df2<-df1[order(-df1[2]),]  ##or   df2<-df1[order(-df1$Freq),]
 
 ## just for fun - sum(df2[,2])
 
 ##sorts rev column from high to low
 df3<-as.data.frame(c1$REVENUE)
-df4<-df3[order(-df3),]
+##   This is not needed  df4<-df3[order(-df3),]
 
 
-##Sort customers by most totah revenue
+##Sort customers by most total revenue
 rv1<-aggregate(REVENUE~CUSTNAME,sum,data = c1)
 rv2<-rv1[order(-rv1[2]),]  ## or rv2<-rv1[order(-rv1$REVENUE),]
 
@@ -46,3 +46,66 @@ rv8<-rv6[rv6[3]<=0,]
 rv8<-rv8[order(rv8[3]),]
 
 
+
+##Part 1 repeat - cust w/most orders
+
+c1<-read.csv("http://rstatistics.net/wp-content/uploads/2015/08/CustomerPartSales.csv")
+options(scipen = 999)
+options(stringsAsFactors = F)
+
+
+                tcust<-table(c1$CUSTNAME)
+                dfcust<-as.data.frame(tcust)
+                dfcust1<-dfcust[order(-dfcust$Freq),]
+                
+##Part 2 repeat - cust w/highest revenue
+                
+                
+                rev<-aggregate(REVENUE~CUSTNAME,sum,data = c1)
+                rev2<-rev[order(-rev$REVENUE),]
+
+                
+## Part 3 repeat - parts that bring in most money
+                rvpart<-aggregate(REVENUE~PARTNUM,sum,data = c1)
+                rvpart2<-rvpart[order(-rvpart$REVENUE),]
+                
+                
+##Part 4 - parts with greatest % margin
+                
+                
+                mar1<-aggregate(MARGIN~PARTNUM,sum,data=c1)
+                mar2<-aggregate(REVENUE~PARTNUM,sum,data=c1)
+                mar3<-merge(mar2,mar1,by="PARTNUM")
+                
+                mar3$MARGIN_PERC<-mar3$MARGIN/mar3$REVENUE
+                mar4<-mar3[order(-mar3$MARGIN_PERC),]
+                
+        ## Exclude parts with less than $100,000 revenue
+                
+                mar5<-mar4[mar4$REVENUE>=100000,]
+                
+        ##include only those that make less than 8%
+                
+                mar6<-mar4[mar4$MARGIN_PERC<.08,]
+        
+                
+        ##show customers that lose money
+                
+                lm<-aggregate(MARGIN~CUSTNAME,sum,data = c1)
+                
+                lose_money<-lm[lm$MARGIN <=0,]
+                
+                
+                
+                        
+                        
+                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
