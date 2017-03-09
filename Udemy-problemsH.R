@@ -1,4 +1,9 @@
-#Task 1: Loyal Customers (order from most # of orders to least # of order)
+##Final Udemy R project
+        ##Get data and assign it to dataframe c1
+        ##c1<-read.csv("http://rstatistics.net/wp-content/uploads/2015/08/CustomerPartSales.csv")
+
+
+##Task 1: Loyal Customers (order from most # of orders to least # of order)
 
 ## just for fun length(unique(c1$CUSTNAME))  head(c1$CUSTNAME,30)
 
