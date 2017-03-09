@@ -47,12 +47,17 @@ rv8<-rv8[order(rv8[3]),]
 
 
 
-##Part 1 repeat - cust w/most orders
+##Start by getting data and making sure everything will work as wanted
 
-c1<-read.csv("http://rstatistics.net/wp-content/uploads/2015/08/CustomerPartSales.csv")
-options(scipen = 999)
-options(stringsAsFactors = F)
+##c1<-read.csv("http://rstatistics.net/wp-content/uploads/2015/08/CustomerPartSales.csv")
+##options(scipen = 999)
+##options(stringsAsFactors = F)
+##Run Str(c1) to see if all variables are of usable type
+##c1$PARTNUM<-as.character(c1$PARTNUM) - (don't want partnumber as integer of numeric)
 
+
+##Part 1 repeat - cust w/most orders 
+        ##(note that $CUSTNAME needs a frequecy to work - thus making it a table)
 
                 tcust<-table(c1$CUSTNAME)
                 dfcust<-as.data.frame(tcust)
